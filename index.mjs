@@ -9,7 +9,7 @@ const DATABASE_URL_DIST = process.env.DATABASE_URL_DIST;
 const DATABASE_URL_LOCAL = process.env.DATABASE_URL_LOCAL;
 
 // dump dist bdd and restore in local in "directus" schema
-await prepareDatabase();
+// await prepareDatabase();
 
 // Génération des scripts sql
 generateSqlMigrationFiles();
@@ -32,10 +32,12 @@ async function prepareDatabase() {
 }
 
 async function migrateAllTables() {
-    await migrate("01_structure");
-    await migrate("02_user");
-    await migrate("03_beneficiary");
-    await migrate("04_followup_type");
+    // await migrate("01_structure");
+    // await migrate("02_user");
+    // await migrate("03_beneficiary");
+    // await migrate("04_followup_type");
+    // await migrate("05_prescribing_organization");
+     await migrate("06_help_request");
 }
 
 async function migrate(path) {

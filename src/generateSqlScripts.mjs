@@ -5,6 +5,8 @@ export function generateSqlMigrationFiles() {
     generateSQLFile("02_user")
     generateSQLFile("03_beneficiary")
     generateSQLFile("04_followup_type")
+    generateSQLFile("05_prescribing_organization")
+    generateSQLFile("06_help_request")
 }
 
 function generateSQLFile(path) {

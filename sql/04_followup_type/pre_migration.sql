@@ -24,5 +24,4 @@ CREATE TABLE "directus"."follow_up_types_temp" AS (
 );
 
 alter table "public"."followup_type" add source_id uuid NOT NULL;
-alter table "public"."followup_type" add "default" boolean NULL;
 
