@@ -1,7 +1,6 @@
 -- "directus"."directus_users"
 
 ALTER TABLE "directus"."directus_users" ADD role_enum text NULL;
-ALTER TABLE "public"."user" ALTER COLUMN "role" DROP NOT NULL;
 
 update "directus"."directus_users" set "status" = 'Active' where "status" = 'active';
 update "directus"."directus_users" set "status" = 'Disabled' where "status" = 'suspended';

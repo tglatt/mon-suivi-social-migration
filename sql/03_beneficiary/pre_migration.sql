@@ -118,6 +118,16 @@ update "directus"."beneficiary" set partner_main_income_type = json(replace(part
 update "directus"."beneficiary" set partner_main_income_type = json(replace(partner_main_income_type::text, 'apl', 'Apl'));
 update "directus"."beneficiary" set partner_main_income_type = json(replace(partner_main_income_type::text, 'other', 'Autre'));
 
-ALTER TABLE "public"."beneficiary" ALTER COLUMN "structure_id" DROP NOT NULL;
-ALTER TABLE "public"."beneficiary" ALTER COLUMN "updated" DROP NOT NULL;
-ALTER TABLE "public"."beneficiary" ALTER COLUMN "aidant_connect_authorized" DROP NOT NULL;
+
+ALTER TABLE "directus"."beneficiary" ADD "structure_id" uuid NULL;
+update "directus"."beneficiary" b set "structure_id" = (
+       SELECT r.organisation
+        FROM "directus"."beneficiary_referents" br, "directus"."directus_users" r
+        WHERE br.beneficiary = b.id
+          AND br.referent = r.id
+        LIMIT 1
+    );
+
+
+update "directus"."beneficiary" set aidant_connect_authorisation = false where aidant_connect_authorisation IS NULL;
+update "directus"."beneficiary" set date_updated = date_created where date_updated IS NULL;
