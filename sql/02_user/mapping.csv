@@ -9,6 +9,6 @@ last_name,last_name
 location,location
 organisation,structure_id
 password,password
-CAST(status AS "UserStatus"),status
+CAST(status_enum AS "UserStatus"),status
 title,title
 CAST(role_enum AS "UserRole"),role

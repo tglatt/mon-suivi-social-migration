@@ -27,29 +27,25 @@ update "directus"."help_requests" hr set type_id = (
         where ft.legacy_id = follow_up_type
 );
 
-update "directus"."help_requests" set "status" = 'WaitingAdditionalInformation' where "status" = 'waiting_additional_information';
-update "directus"."help_requests" set "status" = 'InvestigationOngoing' where "status" = 'investigation_ongoing';
-update "directus"."help_requests" set "status" = 'Accepted' where "status" = 'accepted';
-update "directus"."help_requests" set "status" = 'Refused' where "status" = 'refused';
-update "directus"."help_requests" set "status" = 'Adjourned' where "status" = 'ajourne';
-update "directus"."help_requests" set "status" = 'ClosedByBeneficiary' where "status" = 'closed_by_beneficiary';
-update "directus"."help_requests" set "status" = 'Dismissed' where "status" = 'dismissed';
+ALTER TABLE "directus"."help_requests" ADD status_enum text NULL;
+update "directus"."help_requests" set "status_enum" = 'WaitingAdditionalInformation' where "status" = 'waiting_additional_information';
+update "directus"."help_requests" set "status_enum" = 'InvestigationOngoing' where "status" = 'investigation_ongoing';
+update "directus"."help_requests" set "status_enum" = 'Accepted' where "status" = 'accepted';
+update "directus"."help_requests" set "status_enum" = 'Refused' where "status" = 'refused';
+update "directus"."help_requests" set "status_enum" = 'Adjourned' where "status" = 'ajourne';
+update "directus"."help_requests" set "status_enum" = 'ClosedByBeneficiary' where "status" = 'closed_by_beneficiary';
+update "directus"."help_requests" set "status_enum" = 'Dismissed' where "status" = 'dismissed';
 
--- Virement
-update "directus"."help_requests" set "payment_method" = 'WireTransfer' where "payment_method" = 'bank_transfer';
--- Carte bancaire
-update "directus"."help_requests" set "payment_method" = 'CreditCard' where "payment_method" = 'credit_card';
--- Espèces
-update "directus"."help_requests" set "payment_method" = 'Cash' where "payment_method" = 'cash';
--- Chèque
-update "directus"."help_requests" set "payment_method" = 'Check' where "payment_method" = 'cheque';
--- Bons alimentaire
-update "directus"."help_requests" set "payment_method" = 'FoodStamps' where "payment_method" = 'food_coupon';
+ALTER TABLE "directus"."help_requests" ADD payment_method_enum text NULL;
+update "directus"."help_requests" set "payment_method_enum" = 'WireTransfer' where "payment_method" = 'bank_transfer';
+update "directus"."help_requests" set "payment_method_enum" = 'CreditCard' where "payment_method" = 'credit_card';
+update "directus"."help_requests" set "payment_method_enum" = 'Cash' where "payment_method" = 'cash';
+update "directus"."help_requests" set "payment_method_enum" = 'Check' where "payment_method" = 'cheque';
+update "directus"."help_requests" set "payment_method_enum" = 'FoodStamps' where "payment_method" = 'food_coupon';
 
-update "directus"."help_requests" set "reason" = 'Energy' where "reason" = 'energy';
-update "directus"."help_requests" set "reason" = 'Food' where "reason" = 'food';
-update "directus"."help_requests" set "reason" = 'Housing' where "reason" ='housing'; 
-update "directus"."help_requests" set "reason" = 'Other' where "reason" ='other'; 
+ALTER TABLE "directus"."help_requests" ADD reason_enum text NULL;
+update "directus"."help_requests" set "reason_enum" = 'Energy' where "reason" = 'energy';
+update "directus"."help_requests" set "reason_enum" = 'Food' where "reason" = 'food';
+update "directus"."help_requests" set "reason_enum" = 'Housing' where "reason" ='housing'; 
+update "directus"."help_requests" set "reason_enum" = 'Other' where "reason" ='other'; 
 
-
-update "directus"."help_requests" set "date_updated" = "date_created" where "date_updated" is null; 

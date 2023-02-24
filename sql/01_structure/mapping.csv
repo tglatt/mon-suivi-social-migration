@@ -7,7 +7,7 @@ email,email
 id,id
 name,name
 phone,phone
-CAST(type AS "StructureType"),type
+CAST(type_enum AS "StructureType"),type
 zip_code,zipcode
 inhabitants_number,inhabitants_number
 insee_code,insee_code

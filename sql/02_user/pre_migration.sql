@@ -1,10 +1,11 @@
 -- "directus"."directus_users"
 
+
+ALTER TABLE "directus"."directus_users" ADD status_enum text NULL;
+update "directus"."directus_users" set "status_enum" = 'Active' where "status" = 'active';
+update "directus"."directus_users" set "status_enum" = 'Disabled' where "status" = 'suspended';
+
 ALTER TABLE "directus"."directus_users" ADD role_enum text NULL;
-
-update "directus"."directus_users" set "status" = 'Active' where "status" = 'active';
-update "directus"."directus_users" set "status" = 'Disabled' where "status" = 'suspended';
-
 update "directus"."directus_users" set "role_enum" = 'Administrator' where "role" = '64b185a7-ebac-4089-9073-2405561a6bc4'; 
 update "directus"."directus_users" set "role_enum" = 'StructureManager' where "role" = '77c48d8b-a130-4a49-a00a-53a564bb9dbe'; 
 update "directus"."directus_users" set "role_enum" = 'SocialWorker' where "role" = 'c622eb01-b206-4f50-8c8b-66b6b7c1bcee'; 

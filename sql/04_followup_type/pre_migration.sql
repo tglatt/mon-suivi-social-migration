@@ -22,6 +22,3 @@ CREATE TABLE "directus"."follow_up_types_temp" AS (
         FROM "directus"."follow_up_types" ft, "directus"."organisation_follow_up_types" oft
         WHERE ft.id = oft.follow_up_types_id
 );
-
-alter table "public"."followup_type" add source_id uuid NOT NULL;
-
